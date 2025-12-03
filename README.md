@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ButBooth 📸
 
-## Getting Started
+**Your personal retro photo booth.** ✨
 
-First, run the development server:
+Hi there! Welcome to **ButBooth**, a fun web app that brings the nostalgia of sticker photo booths (Purikura) right to your browser. Snap some cute pics, enjoy the hand-drawn aesthetic, and save your memories instantly!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![ButBooth Preview](./public/preview.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Why You'll Love It 💖
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+*   **📸 Snap & Pose**: Captures a sequence of 3 photos with a handy countdown timer.
+*   **🎨 Retro Vibes**: Features cute checkered backgrounds, hand-drawn frames, and doodle stickers.
+*   **🌈 Color Themes**: Choose your mood—Green, Blue, or Purple!
+*   **💾 Instant Keepsake**: Download your photostrip as a high-quality PNG in one click.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Privacy First 🔒
 
-## Learn More
+**Your photos are 100% yours.**
+*   Everything runs locally in your browser.
+*   We **do not** upload your images to any server.
+*   We **do not** store your data.
+*   Camera access is used *only* while you're taking photos.
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack 🛠️
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Built with love using:
+*   [Next.js 14](https://nextjs.org/) (App Router)
+*   [Tailwind CSS](https://tailwindcss.com/) (Styling)
+*   [html-to-image](https://github.com/bubkoo/html-to-image) (Export magic)
+*   [Lucide React](https://lucide.dev/) (Icons)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Getting Started 🚀
 
-## Deploy on Vercel
+Want to run this on your machine? Easy peasy.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1.  **Clone the repo:**
+    ```bash
+    git clone https://github.com/yourusername/butbooth.git
+    cd butbooth
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the dev server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open it up:**
+    Head to [http://localhost:3000](http://localhost:3000) and start snapping!
+
+## Sources & Credits 📚
+
+*   **Icons**: Beautifully crafted by [Lucide](https://lucide.dev/).
+*   **Doodles**: Custom hand-drawn SVG assets created for this project.
+*   **Inspiration**: Classic Purikura machines and Y2K aesthetic.
+
+---
+
+*Made with 📸 and 💻 by mhdays*
