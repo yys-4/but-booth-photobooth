@@ -2,7 +2,7 @@
 
 **Your personal retro photo booth.** ✨
 
-Hi there! Welcome to **ButBooth**, a fun web app that brings the nostalgia of sticker photo booths (Purikura) right to your browser. Snap some cute pics, enjoy the hand-drawn aesthetic, and save your memories instantly!
+Hi there! Welcome to **ButBooth**, a fun web app that brings the nostalgia of sticker photo booths (Purikura) right to your browser. Snap some cute pics, and save your memories instantly!
 
 ![ButBooth Preview](./public/preview.png)
 
