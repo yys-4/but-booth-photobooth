@@ -16,6 +16,7 @@ export default function PhotoBooth() {
     const [isCapturing, setIsCapturing] = useState(false);
     const [countdown, setCountdown] = useState<number | null>(null);
     const [step, setStep] = useState<'intro' | 'capture' | 'preview'>('intro');
+    const [selectedTheme, setSelectedTheme] = useState<'green' | 'blue' | 'purple' | 'neon-pink'>('green');
 
     const startCamera = async () => {
         try {
@@ -206,7 +207,22 @@ export default function PhotoBooth() {
                 {/* Preview Step */}
                 {step === 'preview' && (
                     <div className="p-6 bg-stone-50 flex flex-col items-center">
-                        <StripComposer ref={stripRef} photos={photos} />
+                        <div className="mb-6 flex gap-2">
+                            <button
+                                onClick={() => setSelectedTheme('green')}
+                                className={clsx("px-4 py-2 rounded-full font-bold text-sm transition-all border-2", selectedTheme === 'green' ? "bg-green-500 text-white border-green-700" : "bg-white text-stone-600 border-stone-200")}
+                            >
+                                Retro Green
+                            </button>
+                            <button
+                                onClick={() => setSelectedTheme('neon-pink')}
+                                className={clsx("px-4 py-2 rounded-full font-bold text-sm transition-all border-2", selectedTheme === 'neon-pink' ? "bg-pink-500 text-white border-pink-700" : "bg-white text-stone-600 border-stone-200")}
+                            >
+                                Neon Pink
+                            </button>
+                        </div>
+
+                        <StripComposer ref={stripRef} photos={photos} theme={selectedTheme} />
 
                         <div className="mt-6 flex gap-3 w-full max-w-[300px]">
                             <button

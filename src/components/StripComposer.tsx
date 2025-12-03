@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 
 interface StripComposerProps {
     photos: string[];
-    theme?: 'green' | 'blue' | 'purple';
+    theme?: 'green' | 'blue' | 'purple' | 'neon-pink';
 }
 
 const StripComposer = forwardRef<HTMLDivElement, StripComposerProps>(
@@ -30,33 +30,44 @@ const StripComposer = forwardRef<HTMLDivElement, StripComposerProps>(
                 accent: 'text-purple-800',
                 border: 'border-purple-700',
             },
+            'neon-pink': {
+                bg: 'bg-stone-900',
+                checkers: 'bg-pink-500', // Not used for checkers but for accent
+                accent: 'text-pink-500',
+                border: 'border-pink-500',
+            }
         };
 
         const currentTheme = themeColors[theme];
+        const isNeon = theme === 'neon-pink';
 
         return (
             <div
                 ref={ref}
                 className={clsx(
-                    "relative w-[300px] p-4 flex flex-col gap-4 items-center overflow-hidden shadow-2xl",
+                    "relative w-[300px] p-4 flex flex-col gap-4 items-center overflow-hidden shadow-2xl transition-colors duration-300",
                     currentTheme.bg
                 )}
                 style={{
-                    // CSS Pattern for checkers
-                    backgroundImage: `
+                    // CSS Pattern for checkers (only for retro themes)
+                    backgroundImage: !isNeon ? `
                 linear-gradient(45deg, ${theme === 'green' ? '#16a34a' : theme === 'blue' ? '#2563eb' : '#9333ea'} 25%, transparent 25%), 
                 linear-gradient(-45deg, ${theme === 'green' ? '#16a34a' : theme === 'blue' ? '#2563eb' : '#9333ea'} 25%, transparent 25%), 
                 linear-gradient(45deg, transparent 75%, ${theme === 'green' ? '#16a34a' : theme === 'blue' ? '#2563eb' : '#9333ea'} 75%), 
                 linear-gradient(-45deg, transparent 75%, ${theme === 'green' ? '#16a34a' : theme === 'blue' ? '#2563eb' : '#9333ea'} 75%)
-            `,
-                    backgroundSize: '40px 40px',
-                    backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px'
+            ` : undefined,
+                    backgroundSize: !isNeon ? '40px 40px' : undefined,
+                    backgroundPosition: !isNeon ? '0 0, 0 20px, 20px -20px, -20px 0px' : undefined
                 }}
             >
                 {/* Title */}
-                <div className="z-10 transform -rotate-2 mb-2">
-                    <h2 className={clsx("font-black text-2xl tracking-tighter uppercase drop-shadow-sm", currentTheme.accent)}
-                        style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", sans-serif' }}
+                <div className={clsx("z-10 mb-2 transition-transform", !isNeon && "transform -rotate-2")}>
+                    <h2 className={clsx(
+                        "font-black text-2xl tracking-tighter uppercase",
+                        currentTheme.accent,
+                        isNeon ? "drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]" : "drop-shadow-sm"
+                    )}
+                        style={{ fontFamily: isNeon ? '"Courier New", monospace' : '"Comic Sans MS", "Chalkboard SE", sans-serif' }}
                     >
                         ButBooth
                     </h2>
@@ -66,13 +77,16 @@ const StripComposer = forwardRef<HTMLDivElement, StripComposerProps>(
                 {photos.map((photo, index) => (
                     <div
                         key={index}
-                        className="relative z-10 bg-white p-2 shadow-md transform transition-transform hover:scale-105"
+                        className={clsx(
+                            "relative z-10 p-2 transform transition-transform hover:scale-105",
+                            isNeon ? "bg-stone-800 shadow-[0_0_15px_rgba(236,72,153,0.5)]" : "bg-white shadow-md"
+                        )}
                         style={{
-                            // Randomize rotation slightly for hand-placed look
-                            transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`,
-                            // Hand-drawn border radius effect
-                            borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px',
-                            border: '3px solid #333'
+                            // Randomize rotation slightly for hand-placed look (only retro)
+                            transform: !isNeon ? `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})` : 'none',
+                            // Hand-drawn border radius effect (only retro)
+                            borderRadius: !isNeon ? '255px 15px 225px 15px / 15px 225px 15px 255px' : '0px',
+                            border: isNeon ? '2px solid #ec4899' : '3px solid #333'
                         }}
                     >
                         <img
@@ -80,23 +94,26 @@ const StripComposer = forwardRef<HTMLDivElement, StripComposerProps>(
                             alt={`Capture ${index + 1}`}
                             className="w-[240px] h-[160px] object-cover"
                             style={{
-                                borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px',
+                                borderRadius: !isNeon ? '255px 15px 225px 15px / 15px 225px 15px 255px' : '0px',
                             }}
                         />
 
-                        {/* Decorative scribbles */}
-                        <svg className="absolute -top-4 -right-4 w-12 h-12 text-yellow-400 z-20" viewBox="0 0 100 100" fill="currentColor">
-                            <path d="M50 0L61 35L98 35L68 57L79 91L50 70L21 91L32 57L2 35L39 35Z" />
-                        </svg>
+                        {/* Decorative scribbles (only retro) */}
+                        {!isNeon && (
+                            <svg className="absolute -top-4 -right-4 w-12 h-12 text-yellow-400 z-20" viewBox="0 0 100 100" fill="currentColor">
+                                <path d="M50 0L61 35L98 35L68 57L79 91L50 70L21 91L32 57L2 35L39 35Z" />
+                            </svg>
+                        )}
                     </div>
                 ))}
 
                 {/* Footer */}
                 <div className="mt-4 z-10 text-center">
-                    <p className={clsx("font-bold text-sm", currentTheme.accent)} style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", sans-serif' }}>
+                    <p className={clsx("font-bold text-sm", currentTheme.accent)}
+                        style={{ fontFamily: isNeon ? '"Courier New", monospace' : '"Comic Sans MS", "Chalkboard SE", sans-serif' }}>
                         {new Date().toLocaleDateString()} • MEMORIES
                     </p>
-                    <p className="text-xs text-stone-500 font-mono mt-1">
+                    <p className={clsx("text-xs font-mono mt-1", isNeon ? "text-pink-300" : "text-stone-500")}>
                         #photobooth
                     </p>
                 </div>
