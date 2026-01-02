@@ -32,3 +32,49 @@ export const Coffee = ({ className }: { className?: string }) => (
         <path d="M35 30 Q40 10 45 30 M55 30 Q60 10 65 30" />
     </svg>
 );
+export const Cat = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
+        <path d="M20 40 L10 10 L40 20 Q50 25 60 20 L90 10 L80 40 Q90 50 90 70 Q90 100 50 100 Q10 100 10 70 Q10 50 20 40 Z" />
+        <circle cx="35" cy="55" r="5" fill="black" fillOpacity="0.2" />
+        <circle cx="65" cy="55" r="5" fill="black" fillOpacity="0.2" />
+        <path d="M45 65 Q50 70 55 65" stroke="black" strokeOpacity="0.2" strokeWidth="3" fill="none" />
+    </svg>
+);
+
+export const Bunny = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
+        <path d="M30 40 L20 0 L40 20 Q50 30 60 20 L80 0 L70 40 Q90 50 90 70 Q90 100 50 100 Q10 100 10 70 Q10 50 30 40 Z" />
+        <circle cx="35" cy="60" r="5" fill="black" fillOpacity="0.2" />
+        <circle cx="65" cy="60" r="5" fill="black" fillOpacity="0.2" />
+    </svg>
+);
+
+export const Bear = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
+        <circle cx="20" cy="20" r="15" />
+        <circle cx="80" cy="20" r="15" />
+        <circle cx="50" cy="60" r="40" />
+        <circle cx="35" cy="55" r="5" fill="black" fillOpacity="0.2" />
+        <circle cx="65" cy="55" r="5" fill="black" fillOpacity="0.2" />
+        <ellipse cx="50" cy="65" rx="10" ry="8" fill="black" fillOpacity="0.1" />
+    </svg>
+);
+
+export const OneFineDayLogo = ({ className, color = "currentColor" }: { className?: string, color?: string }) => (
+    <svg viewBox="0 0 200 80" className={className} fill={color}>
+        {/* Retro style typography 'One Fine Day' approximation */}
+        <path d="M20,40 Q30,10 60,20 T90,30" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" opacity="0.2" />
+        <text x="100" y="40" fontFamily='"Comic Sans MS", fantasy' fontWeight="900" fontSize="40" textAnchor="middle" style={{ transform: 'rotate(-5deg)' }}>
+            One Fine
+        </text>
+        <text x="110" y="70" fontFamily='"Comic Sans MS", fantasy' fontWeight="900" fontSize="40" textAnchor="middle" style={{ transform: 'rotate(-5deg)' }}>
+            Day
+        </text>
+    </svg>
+);
+
+export const Star = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
+        <path d="M50 0 L61 35 L98 35 L68 57 L79 91 L50 70 L21 91 L32 57 L2 35 L39 35Z" />
+    </svg>
+);
